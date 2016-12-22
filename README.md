@@ -16,7 +16,7 @@ Current support:
   <li><code>PRIVMSG</code></li>
   <li><code>PART</code></li>
   <li><code>NOTICE</code></li>
-  <li><code>NICK</code></li>
+  <li><code>NICK</code></li> (planned)
   <li><code>KICK</code></li>
   <li>partial <code>WHOIS</code> support</li>
   <li><code>TOPIC</code></li>
