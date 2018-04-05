@@ -1,0 +1,187 @@
+Ban-type modes
+
++b <hostmask> - Ban
+eg. /mode #mychannel +b [email protected]
+Prevents a given hostmask from joining the channel. Hostmasks are of the form [email protected] and can contain wildcards.
+
+Instead of using a hostmask, you can just provide a nickname or a hostname, and it will be automatically converted into a hostmask for you.
+For example, setting mode +b *.some.annoying.host will be converted automatically to *!*@*.annoying.host in the ban list.
+
+To view the list of channel bans, use mode b without a hostmask, eg. /mode #mychannel b
+To remove a channel ban, use -b with the full banned hostmask, eg. /mode #mychannel -b AbusiveNick!*@*
+
++e <hostmask> - Ban exemption
+eg. /mode #mychannel +e TrustedNick!*@*
+Makes the given hostmask exempt from channel bans.
+Same syntax as +b.
+
++I <hostmask> - Invite exemption
+eg. /mode #mychannel +e RegularNick!*@*
+In channels which are invite-only (see mode +i), makes the given hostmask able to join the channel without being invited first.
+Same syntax as +b.
+
++g <filter> - Custom word filter
+eg. /mode #mychannel +g badword*
+Adds a bad word filter to the filter list. If the entire text of a message sent to the channel exactly matches an entry in the +g list, the message will be blocked.
+
+You can use wildcards, but they are not implicit.
+For example, setting mode +g lick* would block the words lick, licking and lickers but NOT flick, clicked or slickest.
+
+To view the list of bad word filters, use mode g without the filter text, eg. /mode #mychannel g
+To remove a filter from the list, use -b with the filter, eg. /mode #mychannel -g badword*
+
+
+Permission-type modes
+
++v <nick> - Voice
+eg. /mode #mychannel +v VoicedUser
+Gives voice to the specified user. Voice means that the given user can speak on the channel if the channel is moderated (see mode +m). It is also often used to show a user's status within a channel.
+Voiced users appear with a + symbol before their name.
+Halfops and above can give voice.
+
++h <nick> - Halfop
+eg. /mode #mychannel +h HalfopUser
+Gives halfop status to the specified user. Halfops can able to set channel bans, kick users that are not halfop or above, and set the channel topic. They can also set certain channel modes.
+Halfops appear with a % symbol before their name.
+Operators and above can give halfop status.
+
++o <nick> - Operator
+eg. /mode #mychannel +o ChanOp
+Gives operator status to the specified user. As well as having all the abilities of halfops, operators can also kick users that are not admin or above, and set most channel modes.
+Operators appear with a @ symbol before their name.
+Operators and above can give operator status.
+
++a <nick> - Admin
+eg. /mode #mychannel +a ChannelAdmin
+Gives admin status to the specified user, formally known as "protect" mode. Admins can only be kicked by channel owners.
+Admins appear with a & symbol before their name.
+Only channel owners can give admin status.
+
++q <nick> - Owner
+Gives channel owner status to the specified user. Owners can only be kicked by other channel owners.
+Owners appear with a ~ symbol before their name.
+Only network services can give owner status.
+
+
+Flood protection modes
+
++f <lines:seconds> - Message flood limiter
+eg. /mode #mychannel +f 5:5
+Kicks any user who sends <lines> messages in <seconds> seconds to the channel. The above example would kick anyone who sends five lines of text to the channel in less than five seconds.
+If you put an asterisk (*) before the parameter, flooding users will be banned instead of kicked.
+eg. /mode #mychannel +f *10:5 will ban anyone who sends ten lines of text to the channel in less than five seconds.
+
++j <joins:seconds> - Join flood limiter
+eg. /mode #mychannel +j 8:5
+Only <joins> users may join the channel every <seconds> seconds. If this limit is exceeded, the server will 'lock' the channel for one minute before anyone else can join.
+
++F <changes:seconds> - Nick change flood limiter
+eg. /mode #mychannel +F 3:5
+Prevents users from making more than <changes> nickname changes every <seconds> seconds. If this limit is exceeded, the server will prevent anyone in the channel from changing nick for one minute.
+
+
+Normal channel modes
+
++c - Block colour codes
+eg. /mode #mychannel +c
+Blocks all messages containing IRC text formatting codes. This includes colour, bold, underline etc.
+See also: +S
+
++i - Invite-only
+eg. /mode #mychannel +i
+Sets the channel as invite-only. When mode +i is on, users cannot join the channel without being invited by a channel operator or above.
+The invite command is /invite <nickname> <channel> - eg. /invite SomeIRCUser #mychannel
+See also: +A, +I, +K
+
++k <key> - Channel key
+eg. /mode #mychannel +k MyChannelPassword
+Sets a channel key. Keys are like channel passwords: users can only join the channel if they provide the correct key.
+The command to join a channel with a key is /join <channel> <key> - eg. /join #mychannel MyChannelPassword
+
++l <limit> - Channel user limit
+eg. /mode #mychannel +l 50
+Limit the channel to the specified number of users. If anyone else tries to join when the channel is full, they will not be able to join, and will get a message telling them that the channel is full.
+See also: +L
+
++m - Moderation
+eg. /mode #mychannel +m
+Moderation means that only users with voice (+v) or above can speak on the channel.
+See also: +M
+
++n - No external messages
+eg. /mode #mychannel +n
+Prevents people who haven't joined the channel from sending messages to it. This is set by default, and should rarely be removed.
+
++p - Private channel
+eg. /mode #mychannel +p
+Private channels do not appear in your /whois channel list, and the channel name and topic are hidden in the /list command.
+See also: +s
+
++s - Secret channel
+eg. /mode #mychannel +s
+Secret channels are almost identical to private channels (see mode +p), except they do not appear in the /list command at all.
+
++t - Restrict topic changes
+eg. /mode #mychannel +t
+Only users with halfop or above can change the channel topic. This is set by default, and should rarely be removed.
+
++u - Auditorium
+eg. /mode #mychannel +u
+Makes the channel an auditorium. Unless you have channel operator status or above, anyone below channel operator is invisible in the channel's user list.
+
++A - Permissive invites
+eg. /mode #mychannel +A
+Normally, only channel operators and above can invite users to a channel. Mode +A allows anyone in the channel to invite users to it.
+See also: +i, +I
+
++B - Block all-caps
+eg. /mode #mychannel +B
+Blocks messages containing too many capital letters.
+
++C - Block CTCPs
+eg. /mode #mychannel +C
+Blocks CTCP messages to the channel.
+
++G - Bad words filter
+eg. /mode #mychannel +G
+Censors messages to the channel. Any profanity in messages will be replaced with the text <censored>.
+See also: +g
+
++J <seconds> - Rejoin limiter
+eg. /mode #mychannel +J 15
+Prevents users from rejoining within <seconds> seconds after being kicked from the channel.
+
++K - No knocks
+eg. /mode #mychannel +K
+Prevents users from using /knock to ask for invitations to invite-only channels (see mode +i).
+
++L <channel> - Channel redirection
+eg. /mode #mychannel +L #mychannel-overflow
+If the channel is full (see mode +l) then any users trying to join will be redirected to the specified channel.
+
++M - Mute unregistered users
+eg. /mode #mychannel +M
+Blocks unregistered users from speaking, unless they have voice (+v) or higher.
+See also: +m, +R
+
++N - No nick changes
+eg. /mode #mychannel +N
+Blocks any users on the channel from changing nicks, unless they have voice (+v) or higher.
+
++Q - No kicks
+eg. /mode #mychannel +Q
+Prevents users from kicking other users from the channel. Only IRC services can kick users.
+
++R - No unregistered users
+eg. /mode #mychannel +R
+Prevents unregistered users from joining the channel.
+See also: +M
+
++S - Strip colour codes
+eg. /mode #mychannel +S
+Strips all IRC text formatting codes from messages. This includes colour, bold, underline etc.
+See also: +c
+
++T - No notices
+eg. /mode #mychannel +T
+Prevents users who are not halfop or above from sending notices to the channel.

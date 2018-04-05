@@ -1,0 +1,53 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root{
+    -fx-color: #080808;
+    -fx-background: #080808;
+}
+/* do this */
+#topic{
+	-fx-font-family: Consolas;
+	-fx-text-fill: #cccccc;
+	-fx-font-size: 20px;
+	-fx-wrap-text: true;
+}
+.button{
+	-fx-font-family: Consolas;
+	-fx-font-size: 15px;
+    -fx-text-fill: #cccccc;
+    -fx-background-color: #212121;
+    -fx-padding: 10;
+    -fx-border-insets: 3px;
+    -fx-background-insets: 3px;
+    -fx-pref-width: 150;
+    -fx-wrap-text: false;
+}
+.button:hover{
+    -fx-background-color: #404040;
+}
+.text-area {
+    -fx-font-family: Consolas;
+    -fx-font-size: 15;
+    -fx-text-fill: #cccccc;
+    -fx-focus-color: #333333;
+   /* -fx-display-caret: false;*/
+}
+.text-area .content {
+    -fx-background-color: #212121;
+}
+#persons{
+	-fx-pref-width: 200;
+}
+.text-field {
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+    -fx-text-fill: #cccccc;
+    -fx-focus-color: #333333;
+    -fx-background-color: #212121;
+    -fx-padding: 10;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-focus-color: #333333;
+   /* -fx-display-caret: false;*/
+}
+

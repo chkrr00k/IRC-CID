@@ -1,0 +1,40 @@
+Most IRC clients will accept caret notation for formatting IRC text.
+Colors
+
+The general formula for colors is ^CN,M.
+
+^C is ASCII character 3 (usually represented as \x03 in code). N is the text (foreground) color, M is the background color.
+A background color is not always included. If no background color is set, the receiving client uses the default background color.
+Additionally, you can use color 99 to indicate the default color.
+Color codes
+Number 	Name
+00 	white
+01 	black
+02 	blue (navy)
+03 	green
+04 	red
+05 	brown (maroon)
+06 	purple
+07 	orange (olive)
+08 	yellow
+09 	light green (lime)
+10 	teal (a green/blue cyan)
+11 	light cyan (cyan / aqua)
+12 	light blue (royal)
+13 	pink (light purple / fuchsia)
+14 	grey
+15 	light grey (silver)
+Example
+
+Red text on a blue background would be:
+
+jenni.reply("\x0304,02Example\x03")
+
+Other formatting
+Code 	Meaning
+\x02 	bold
+\x03 	colored text
+\x1D 	italic text
+\x1F 	underlined text
+\x16 	swap background and foreground colors ("reverse video")
+\x0F 	reset all formatting
