@@ -126,11 +126,7 @@ public class OptionFrame extends JFrame implements ActionListener{
 	}
 
 	public static void main(String[] args){
-		//OptionFrame opt = new OptionFrame("test", "ClientInDevelopment", "Chkrr00ksPropriety", "chat.freenode.net", true);
 		OptionFrame opt = new OptionFrame("test", "ClientInDevelopment", "Chkrr00ksPropriety", "irc.rizon.net", false);
-		//OptionFrame opt = new OptionFrame("CID:IRC", "ClientInDevelopment", "OctPropriety", "irc.canternet.org", true);
-		//OptionFrame opt = new OptionFrame("CID:IRC", "ClientInDevelopment", "OctPropriety", "irc..net", true);
-		//OptionFrame opt = new OptionFrame("CID:IRC", "ClientInDevelopment", "OctPropriety", "192.168.1.102", false);
 	}
 	
 }
